@@ -62,8 +62,8 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label id="email-label" for="email">Card Type</label>
-						<select name="card_type" id="card_type" form="carform" class="form-control" >
-						<option value="Universal">Universal</option>
+						<select name="card_type" id="card_type" class="form-control" >
+						<option value="Universal" selected>Universal</option>
 						</select>
 						 
 					</div>

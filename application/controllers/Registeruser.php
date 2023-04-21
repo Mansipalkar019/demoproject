@@ -15,12 +15,14 @@ class Registeruser extends CI_Controller {
   }
 
   public function register_user(){
+    print_r($_POST);die();
     $rfid_card_no = $this->input->post('rfid_card_no');
     $first_name = $this->input->post('first_name');
     $last_name = $this->input->post('last_name');
     $contact_no = $this->input->post('contact_no');
     $wallet_amount = $this->input->post('wallet_amount');
     $card_type = $this->input->post('card_type');
+  
     $this->form_validation->set_rules('rfid_card_no', 'RFID card no', 'trim|required',array('required' => 'You must provide a %s',));  
     $this->form_validation->set_rules('first_name', 'First Name', 'trim|required',array('required' => 'You must provide a %s',));  
     $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required',array('required' => 'You must provide a %s',)); 
