@@ -59,12 +59,7 @@
 						 <span class="error_msg" id="wallet_amount_error"></span>
 					</div>
 				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label id="email-label" for="email">Wallet Amount</label>
-						<input type="number" name="wallet_amount" id="wallet_amount" placeholder="Enter Wallet Amount" class="form-control" required>
-					</div>
-				</div>
+				
 			</div>
 			
 			<div class="row">
