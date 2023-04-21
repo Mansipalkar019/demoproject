@@ -26,6 +26,7 @@ class Registeruser extends CI_Controller {
       'first_name'=>$this->input->post('first_name'),
       'last_name'=>$this->input->post('last_name'),
       'contact_no'=>$this->input->post('contact_no'),
+      'wallet_amount'=>$this->input->post('wallet_amount'),
     );
     $curl=$this->link->hits('get-home-page-data',$curl_data); 
     //echo "<pre>";print_r($_POST);die();

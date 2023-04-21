@@ -3,12 +3,7 @@ $("#register_user_form").submit(function(e) {
     e.preventDefault();
     var formData = new FormData($("#register_user_form")[0]);
     var attributeForm = $(this);
-    var rfid_card_no=$('#rfid_card_no').val();
-    var first_name=$('#first_name').val();
-    var last_name=$('#last_name').val();
-    var contact_no=$("#contact_no").val();
    
-       
     jQuery.ajax({
         dataType: "json",
         type: "POST",
