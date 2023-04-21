@@ -9,6 +9,8 @@ class Registeruser extends CI_Controller {
   }
 
   public function index(){
+    // $data =  token_get();
+    // echo '<pre>'; print_r($data); exit;
     $this->load->view('registeruser');
   }
 
