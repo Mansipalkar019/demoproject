@@ -59,7 +59,15 @@
 						 <span class="error_msg" id="wallet_amount_error"></span>
 					</div>
 				</div>
-				
+				<div class="col-md-6">
+					<div class="form-group">
+						<label id="email-label" for="email">Card Type</label>
+						<select name="card_type" id="card_type" form="carform" class="form-control" >
+						<option value="Universal">Universal</option>
+						</select>
+						 
+					</div>
+				</div>
 			</div>
 			
 			<div class="row">
