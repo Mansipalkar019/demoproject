@@ -26,32 +26,32 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label id="name-label" for="name">RFID No.</label>
-						<input type="text" name="rfid_card_no" id="rfid_card_no" placeholder="RFID No." class="form-control" required>
+						<input type="text" name="rfid_card_no" id="rfid_card_no" placeholder="RFID No." class="form-control">
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label id="name-label" for="name">First Name</label>
-						<input type="text" name="first_name" id="first_name" placeholder="Enter your First name" class="form-control" required>
+						<input type="text" name="first_name" id="first_name" placeholder="Enter your First name" class="form-control">
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label id="name-label" for="name">Last Name</label>
-						<input type="text" name="last_name" id="last_name" placeholder="Enter your Last name" class="form-control" required>
+						<input type="text" name="last_name" id="last_name" placeholder="Enter your Last name" class="form-control">
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label id="email-label" for="email">Contact No.</label>
-						<input type="text" name="contact_no" id="contact_no" placeholder="Enter your Contact No." class="form-control" required>
+						<input type="text" name="contact_no" id="contact_no" placeholder="Enter your Contact No." class="form-control" maxlength="10">
 					</div>
 				</div>
 			</div>
 			
 			<div class="row">
 				<div class="col-md-4">
-					<button type="submit" id="submit" class="btn btn-primary btn-block">Submit Survey</button>
+					<button type="submit" id="submit" class="btn btn-primary btn-block">Submit</button>
 				</div>
 			</div>
 
