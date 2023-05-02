@@ -15,7 +15,7 @@ class Registeruser extends CI_Controller {
   }
 
   public function register_user(){
-    print_r($_POST);die();
+    // print_r($_POST);die();
     $rfid_card_no = $this->input->post('rfid_card_no');
     $first_name = $this->input->post('first_name');
     $last_name = $this->input->post('last_name');
