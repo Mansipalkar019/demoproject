@@ -15,7 +15,6 @@ class Registeruser extends CI_Controller {
   }
 
   public function register_user(){
-    // print_r($_POST);die();
     $rfid_card_no = $this->input->post('rfid_card_no');
     $first_name = $this->input->post('first_name');
     $last_name = $this->input->post('last_name');
@@ -48,6 +47,7 @@ class Registeruser extends CI_Controller {
               'card_type'=>$card_type,
             );
             $curl=$this->link->hits('register-user',$curl_data); 
+            // print_r($curl);die;
             $curl=json_decode($curl,true);
             if($curl['status']=='1'){
                 $response['message']='Register successfully';
@@ -64,6 +64,106 @@ class Registeruser extends CI_Controller {
         }
         echo json_encode($response);
   }
+  
+ public function view_history(){
+    $this->load->view('viewhistory');
+  }
 
+//   public function get_user_history()
+//   {
+//     $rfid_card_no = $this->input->post('rfid_card_no');
+   
+//       $curl_data=array(
+//         'rfid_card_no'=>$rfid_card_no,
+//       ); 
+//       //print_r($curl_data);die();
+//       $curl=$this->link->hits('get-user-hist',$curl_data); 
+//       print_r($curl);die();
+      
+//       $curl=json_decode($curl,true);
+//       $data['product_data'] = $curl['data'];
+//       if($curl['status']=='1'){
+//           $response['message']='Register successfully';
+//           $response['status'] = "success";
+//       }else {
+//           if($curl['error_status'] == 'rfid') {
+//                   $error = 'rfid_card_no';
+//               } else {
+//                   $error = 'contact_no';
+//               }
+//             $response['status'] = 'failure';
+//             $response['error'] = array($error => $curl['message']);
+//       }
+        
+//       echo json_encode($response);
+//   }
 
+ public function get_user_history()
+  {
+    $rfid_card_no = $this->input->post('rfid_card_no');
+      $curl_data=array(
+        'rfid_card_no'=>$rfid_card_no,
+      ); 
+      $curl=$this->link->hits('get-user-hist',$curl_data); 
+      $curl=json_decode($curl,true);
+       
+      $data['user_info'] = $curl['data'];
+      $count_all=count($data['user_info']);
+      $count_filtered=count($data['user_info']);
+      $data_array=array();
+    foreach($data['user_info'] as $category_details_key => $data_row)
+    {
+      $nestedData=array();
+      if ($data_row['used_status'] == 1) {
+        $nestedData[] = '<a style="color:red;font-weight: 800;">'.$data_row['first_name'].' '.$data_row['last_name'].'</a>';
+        $nestedData[] = '<a style="color:red;font-weight: 800;">'.$data_row['device_id'].'</a>';
+        $nestedData[] = '<a style="color:red;font-weight: 800;">'.$data_row['card_type'].'</a>';
+        $nestedData[] = '<a style="color:red;font-weight: 800;">'.$data_row['wallet_amount'].'</a>';
+        $nestedData[] = '<a style="color:red;font-weight: 800;">'.$data_row['total_amount'].'</a>';
+        $nestedData[] = '<a style="color:red;font-weight: 800;">'.$data_row['validity_from_date'].'</a>';
+        $nestedData[] = '<a style="color:red;font-weight: 800;">'.$data_row['validity_to_date'].'</a>';
+        $nestedData[] = '<a style="color:red;font-weight: 800;">'.$data_row['created_at'].'</a>';
+        $nestedData[] = '<a style="color:red;font-weight: 800;">'.$data_row['rfid_card_no'].'</a>';
+        $nestedData[] = '<a style="color:red;font-weight: 800;">'.$data_row['rfid_card_num'].'</a>';
+      }else{
+        $nestedData[] = $data_row['first_name'].' '.$data_row['last_name'];
+        $nestedData[] = $data_row['device_id'];
+        $nestedData[] = $data_row['card_type'];
+        $nestedData[] = $data_row['wallet_amount'];
+        $nestedData[] = $data_row['total_amount'];
+        $nestedData[] = $data_row['validity_from_date'];
+        $nestedData[] = $data_row['validity_to_date'];
+        $nestedData[] = $data_row['created_at'];
+        $nestedData[] = $data_row['rfid_card_no'];
+        $nestedData[] = $data_row['rfid_card_num'];
+      }
+      
+                
+      $data_array[] = $nestedData;  
+
+    }   
+      $output = array(
+            "draw" => intval($_POST['draw']),
+            "recordsTotal" => intval($count_all),
+            "recordsFiltered" => intval($count_filtered),
+            "data" => $data_array,
+        );
+        
+        // Output to JSON format
+        echo json_encode($output);   
+      // if($curl['status']=='1'){
+      //     $response['message']='Register successfully';
+      //     $response['status'] = "success";
+      // }else {
+      //     if($curl['error_status'] == 'rfid') {
+      //             $error = 'rfid_card_no';
+      //         } else {
+      //             $error = 'contact_no';
+      //         }
+      //       $response['status'] = 'failure';
+      //       $response['error'] = array($error => $curl['message']);
+      // }
+        
+      //echo json_encode($response);
+  }
 }
